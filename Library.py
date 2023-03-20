@@ -9,6 +9,6 @@ class Library:
         self.rentables = []
 
     def add_library(self, name):
-        f = open("library.txt", "a")
+        f = open("Library.txt", "a")
         f.write(self.name)
         f.close()

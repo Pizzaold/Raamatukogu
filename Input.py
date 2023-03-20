@@ -4,7 +4,7 @@ This fail is used to get the input from the user
 """
 
 # Get the list of the library
-f = open("library.txt", "r")
+f = open("Raamatukogu/Library.txt", "r")
 list_of_libraries = f.readlines()
 f.close()
 
