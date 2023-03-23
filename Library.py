@@ -5,7 +5,7 @@ Library class is used to create a library object
 class Library:
     def __init__(self, name):
         self.name = name
-        self.members = []
+        self.members = open("members", "r").readlines()[1:]
         self.rentables = open("rentable_objects", "r").readlines()
 
     def add_library(self, name):
@@ -15,6 +15,7 @@ class Library:
 
     def test(self):
         print(self.rentables)
+        print(self.members)
 
 
 if __name__ == "__main__":
