@@ -15,9 +15,16 @@ class Library:
 
     def test(self):
         print(self.rentables)
-        print(self.members)
+
+    def rent(self):
+        lines = open("members", "r")
+        for line in lines:
+            line.strip("\n")
+            print(line)
+
 
 
 if __name__ == "__main__":
     library1 = Library("Test")
     library1.test()
+    library1.rent()
