@@ -33,3 +33,15 @@ elif new_or_old == "old":
 else:
     print("Invalid input")
     exit()
+
+
+rentables_question = input("Do you want to see our list of rentable books, magazines, DVDs? (yes/no): ")
+
+if rentables_question == "yes":
+    print("Our rentable books, magazines and DVDs are:")
+    for object in library.rentables:
+        print(object)
+elif rentables_question == "no":
+    print("K.")
+else:
+    print("Invalid input")
