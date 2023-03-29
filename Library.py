@@ -8,7 +8,7 @@ class Library:
     def __init__(self, name):
         self.name = name
         self.members = open("members.txt", "r").readlines()[1:]
-        self.rentables = open("rentable_objects", "r").readlines()
+        self.rentables = open("rentable_objects.txt", "r").readlines()
 
     def add_library(self, name):
         f = open("Library.txt", "a")
@@ -20,7 +20,7 @@ class Library:
 
     def rent(self, rentable, user):
         """Rent out a rentable object to user by adding it to members lib and removing one from library lib."""
-        items = open("rentable_objects", "r+")
+        items = open("rentable_objects.txt", "r+")
         offset = 0
         for item in items:
             item_name = item.split(",")[1]  # Find the name of the object
@@ -35,9 +35,9 @@ class Library:
                             line.strip("\n")
                             members.seek(offset - 1)  # Seek out the right place to write the new line
                             members.write(f",{rentable};{date.today()}\n")  # Write the rented object to user lib
-                with open("rentable_objects", "r") as temp:  # Open rentable_objects.txt for reading
+                with open("rentable_objects.txt", "r") as temp:  # Open rentable_objects.txt for reading
                     lines = temp.readlines()
-                with open("rentable_objects", "w") as objects:  # Open rentable_objects.txt for writing
+                with open("rentable_objects.txt", "w") as objects:  # Open rentable_objects.txt for writing
                     for line in lines:
                         amount = line.split(",")[-1:]  # Finds the amount of available items
                         for item in amount:  # Makes list into str
