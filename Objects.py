@@ -1,7 +1,9 @@
 class Book:
 
-    def __init__(self, name):
+    def __init__(self, name, amount, popularity):
         self.name = name
+        self.amount = amount
+        self.popularity = popularity
         rentable = True
 
     def __repr__(self):
@@ -10,8 +12,10 @@ class Book:
 
 class Magazine:
 
-    def __init__(self, name):
+    def __init__(self, name, amount, popularity):
         self.name = name
+        self.amount = amount
+        self.popularity = popularity
         rentable = True
 
     def __repr__(self):
@@ -20,8 +24,10 @@ class Magazine:
 
 class DVD:
 
-    def __init__(self, name):
+    def __init__(self, name, amount, popularity):
         self.name = name
+        self.amount = amount
+        self.popularity = popularity
         rentable = True
 
     def __repr__(self):
