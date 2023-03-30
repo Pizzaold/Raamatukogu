@@ -1,24 +1,24 @@
 What we have:
-•	Basic ask user thingy.
+•	Basic ass ask user thingy.
 •	Can add object to member and subtract it from library.
 •	Book, Magazine and DVD classes.
 •	Can create a Library.
 •	Can some what go back to old library.
+•	Make so other objects also have amount
+•	Objects have popularity.
 
 What to add to existing things:
 •	Connect everything with input file.
 •	Can remove the object from member and add it back to library.
-•	Make so other objects also have amount.
 
 Still to do:
-•	Objects have popularity.
-•	User can add object to library.
-•	Population increases with rending.
-•	Hared code into max amount of days book can be rented. 
-•	Add Late fee.
-•	Calculate late fee amount.
-•	Member can join library.
-•	One user can be member of multiple libraries.
+•	User can add object to library. +
+•	Population increases with rending. +
+•	Hared code into max amount of days object can be rented. +
+•	Add Late fee. +
+•	Calculate late fee amount. +
+•	Member can join library. +
+•	One user can be member of multiple libraries. +
 •	User can add book to member.
 •	Member can see his rented objects, those objects return dates and late fees.
 •	User can see his libraries objects.
@@ -31,3 +31,9 @@ Still to do:
 •	Member and user can see 10 most popular objects.
 
 Remainder: User = Library manager/worker, Member = Library Member.
+Fix bugs and add documentation.
+
+Members:
+Aaron +++
+Aimar +++
+Jürmo +++
