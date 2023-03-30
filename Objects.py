@@ -6,7 +6,7 @@ class Book:
 
     def add(self, amount):
         with open("rentable_objects", "w") as objects:
-            objects.write(f"book,{str(self)},{amount}")
+            objects.write(f"book,{str(self)},{amount}:")
 
     def __repr__(self):
         return self.name
@@ -34,7 +34,7 @@ class DVD:
 
 if __name__ == "__main__":
     book1 = Book("Lord of the rings")
-    book1.add(2)
+    book1.add(10)
 
 with open("rentable_objects", "r") as object1:
     line = object1.readline()
