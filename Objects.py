@@ -39,7 +39,7 @@ class DVD:
 
 
 if __name__ == "__main__":
-    book1 = Book("Lord of the rings")
+    book1 = Book("Lord of the rings", 2, 0)
     book1.add(2)
 
 with open("rentable_objects.txt", "r") as object1:

@@ -50,13 +50,8 @@ class Library:
                             objects.write(line)  # Writes unedited lines back to file
 
 
-
-
-
-
-
 if __name__ == "__main__":
-    book1 = Book("Lord of the rings")
+    book1 = Book("Lord of the rings", 1, 0)
     library1 = Library("Test")
     library1.test()
-    library1.rent(book1, "aimar")
+    library1.rent(book1, "Jurmo")
