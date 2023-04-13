@@ -2,24 +2,48 @@
 Library class is used to create a library object
 """
 from datetime import date
-from Objects import Book
+from Object import Item
+from pymongo import MongoClient
+from db import dbname_lib
+
 
 class Library:
-    def __init__(self, name):
-        self.name = name
-        self.members = open("members.txt", "r").readlines()[1:]
-        self.rentables = open("rentable_objects.txt", "r").readlines()
+    def __init__(self, libary_name):
+        self.type = ["book", "magazine", "dvd"]
+        self.libary_name = libary_name
 
-    def add_library(self, name):
-        f = open("Library.txt", "a")
-        f.write(self.name)
-        f.close()
+    def create_libary(self):
+        dbname_lib.librarys.insert_one(
+            {
+                "name": self.libary_name,
+                "rentables": [],
+            }
+        )
+
+    def add_item(self, item_name, amount, type):
+        if type not in self.type:
+            print("Invalid type")
+        else:
+            dbname_lib.librarys.update_one(
+                {"name": self.libary_name},
+                {
+                    "$push": {
+                        "rentables": {
+                            "type": type,
+                            "name": item_name,
+                            "amount": amount,
+                            "popularity": 0,
+                        }
+                    }
+                },
+            )
 
     def test(self):
-        print(self.rentables)
+        dbname_lib.librarys.find_one({"name": self.libary_name})
 
-    def rent(self, rentable, user):
-        """Rent out a rentable object to user by adding it to members lib and removing one from library lib."""
+
+"""    def rent(self, rentable, user):
+        "Rent out a rentable object to user by adding it to members lib and removing one from library lib."
         items = open("rentable_objects.txt", "r+")
         offset = 0
         for item in items:
@@ -48,15 +72,11 @@ class Library:
                             objects.write(temp)  # Writes edited amount back to file
                         else:
                             objects.write(line)  # Writes unedited lines back to file
+"""
 
 
-
-
-
-
-
-if __name__ == "__main__":
+"""if __name__ == "__main__":
     book1 = Book("Lord of the rings")
     library1 = Library("Test")
     library1.test()
-    library1.rent(book1, "aimar")
+    library1.rent(book1, "aimar")"""
