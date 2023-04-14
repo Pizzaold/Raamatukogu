@@ -1,6 +1,6 @@
 from Library import Library
 from pymongo import MongoClient
-from db import dbname_lib
+from db import dbname_lib, dbname_mem
 
 """
 This fail is used to get the input from the user
@@ -35,12 +35,32 @@ elif new_or_old == "old":
         next_action = input("Do you want to add a new item or rent out an item? (add/rent): ")
         if next_action == "add":
             item_name = input("Enter the name of the item: ")
-            amount = input("Enter the amount of the item: ")
+            amount = int(input("Enter the amount of the item: "))
             type = input("Enter the type of the item: ")
             library.add_item(item_name, amount, type)
             print("The item has been added")
         elif next_action == "rent":
-            pass
+            item_type = []
+            members = []
+            for rentable in dbname_lib.librarys.find({"name": libary_name}):
+                for rentable in rentable["rentables"]:
+                    item_type.append(rentable["name"])
+            print("The list of the rentable items are: ")
+            for rentable in item_type:
+                print(rentable)
+            for member in dbname_mem.members.find():
+                members.append(member["name"])
+            print("The list of the members are: ")
+            for member in members:
+                print(member)
+            rentable_name = input("Enter the name of the rentable item: ")
+            if rentable_name in item_type:
+                member = input("Enter the name of the member: ")
+                library.rent(rentable_name, member)
+                print("The item has been rented out")
+            else:
+                print("This item does not exist")
+                exit()
     else:
         print("This library does not exist")
         exit()
