@@ -14,12 +14,12 @@ class Library:
 
     def __init__(self, libary_name):
         self.type = ["book", "magazine", "dvd"]
-        self.libary_name = libary_name
+        self.library_name = libary_name
 
-    def create_libary(self):
+    def create_library(self):
         dbname_lib.librarys.insert_one(
             {
-                "name": self.libary_name,
+                "name": self.library_name,
                 "rentables": [],
             }
         )
@@ -29,7 +29,7 @@ class Library:
             print("Invalid type")
         else:
             dbname_lib.librarys.update_one(
-                {"name": self.libary_name},
+                {"name": self.library_name},
                 {
                     "$push": {
                         "rentables": {
@@ -43,10 +43,10 @@ class Library:
             )
 
     def test(self):
-        dbname_lib.librarys.find_one({"name": self.libary_name})
+        dbname_lib.librarys.find_one({"name": self.library_name})
 
     def rent(self, rentable, member):
-        item_type = dbname_lib.librarys.find_one({"name": self.libary_name, 'rentables': {'$elemMatch': {'name': rentable}}})
+        item_type = dbname_lib.librarys.find_one({"name": self.library_name, 'rentables': {'$elemMatch': {'name': rentable}}})
         item_type = item_type['rentables'][0]['type']
         dbname_mem.members.update_one(
             {"name": member},
@@ -55,7 +55,7 @@ class Library:
                     "rentables": {
                         "name": rentable,
                         "type": item_type,
-                        "library": self.libary_name,
+                        "library": self.library_name,
                         "rent_our_date": datetime.datetime.strptime(datetime.datetime.now().strftime("%Y-%m-%d"), "%Y-%m-%d"),
                         "return_date": Library.return_time,
                     }
@@ -64,15 +64,15 @@ class Library:
         )
 
         dbname_lib.librarys.update_one(
-            {"name": self.libary_name, "rentables.name": rentable},
+            {"name": self.library_name, "rentables.name": rentable},
             {
                 "$inc": {"rentables.$.amount": -1},
             },
         )
 
-        if dbname_lib.librarys.find_one({"name": self.libary_name, "rentables.name": rentable})['rentables'][0]['popularity'] < 10:
+        if dbname_lib.librarys.find_one({"name": self.library_name, "rentables.name": rentable})['rentables'][0]['popularity'] < 10:
             dbname_lib.librarys.update_one(
-                {"name": self.libary_name, "rentables.name": rentable},
+                {"name": self.library_name, "rentables.name": rentable},
                 {
                     "$inc": {"rentables.$.popularity": +1},
                 },
