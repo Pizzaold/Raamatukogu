@@ -72,7 +72,7 @@ class Library:
                         "name": rentable,
                         "type": item_type,
                         "library": self.library_name,
-                        "rent_our_date": datetime.datetime.strptime(datetime.datetime.now().strftime("%Y-%m-%d"), "%Y-%m-%d"),
+                        "rent_out_date": datetime.datetime.strptime(datetime.datetime.now().strftime("%Y-%m-%d"), "%Y-%m-%d"),
                         "return_date": Library.return_time,
                     }
                 }
