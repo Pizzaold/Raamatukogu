@@ -1,5 +1,9 @@
 from pymongo import MongoClient
 from db import dbname_lib
+"""
+File with the item class.
+Used to add items to the library database.
+"""
 
 
 class Item:

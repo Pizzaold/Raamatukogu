@@ -1,11 +1,12 @@
-"""
-Library class is used to create a library object
-"""
 import datetime
 from Object import Item
 from pymongo import MongoClient
 from db import dbname_lib
 from db import dbname_mem
+"""
+File with the Library class.
+Used to for all main library functions.
+"""
 
 
 class Library:
@@ -13,6 +14,7 @@ class Library:
     return_time = datetime.datetime.strptime(datetime.datetime.now().strftime("%Y-%m-%d"), "%Y-%m-%d") + datetime.timedelta(days=21)
 
     def __init__(self, libary_name):
+        """init :)"""
         self.type = ["book", "magazine", "dvd"]
         self.library_name = libary_name
 
@@ -25,6 +27,13 @@ class Library:
         )
 
     def add_item(self, item_name, amount, type):
+        """
+        Add an item to the library database
+        :param item_name: The name of the item
+        :param amount: The amount of the item
+        :param type: The type of the item
+        :return: None
+        """
         if type not in self.type:
             print("Invalid type")
         else:
@@ -43,9 +52,16 @@ class Library:
             )
 
     def test(self):
+        """Just some random test"""
         dbname_lib.librarys.find_one({"name": self.library_name})
 
     def rent(self, rentable, member):
+        """
+        Rent an item to a member, icrease the popularity of the item and decrease the amount of the item in library.
+        :param rentable: The name of the rentable item
+        :param member: The name of the member
+        :return: None
+        """
         item_type = dbname_lib.librarys.find_one({"name": self.library_name, 'rentables': {'$elemMatch': {'name': rentable}}})
         item_type = item_type['rentables'][0]['type']
         dbname_mem.members.update_one(
@@ -79,6 +95,10 @@ class Library:
             )
 
     def see_rentables(self):
+        """
+        See the list of the rentable items in the library
+        :return: None
+        """
         rentables = []
         for rentable in dbname_lib.librarys.find({"name": self.library_name}):
             for rentable in rentable["rentables"]:

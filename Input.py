@@ -3,7 +3,8 @@ from pymongo import MongoClient
 from db import dbname_lib, dbname_mem
 
 """
-This fail is used to get the input from the user
+File with the main function.
+Used to start the program and get users input.
 """
 
 # Get the list of the library
