@@ -77,3 +77,12 @@ class Library:
                     "$inc": {"rentables.$.popularity": +1},
                 },
             )
+
+    def see_rentables(self):
+        rentables = []
+        for rentable in dbname_lib.librarys.find({"name": self.library_name}):
+            for rentable in rentable["rentables"]:
+                rentables.append(rentable["name"])
+        print("The list of the rentable items are: ")
+        for rentable in rentables:
+            print(rentable)

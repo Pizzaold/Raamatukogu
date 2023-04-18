@@ -32,7 +32,8 @@ while True:
         if library_name in list_of_libraries:
             library = Library(library_name)
             print("The library has been selected")
-            next_action = input("Do you want to add a new item or rent out an item? (add/rent): ")
+            print(f"The list of actions for {library_name} are: add, rent, see_rentables.")
+            next_action = input("What is your next action? ")
             if next_action == "add":
                 item_name = input("Enter the name of the item: ")
                 amount = int(input("Enter the amount of the item: "))
@@ -63,6 +64,8 @@ while True:
                         print("This item does not exist")
                 else:
                     print("This item is rented out")
+            elif next_action == "see_rentables":
+                library.see_rentables()
         else:
             print("This library does not exist")
     else:
