@@ -8,11 +8,11 @@ Used to start the program and get users input.
 """
 
 # Get the list of the library
-list_of_libraries = []
-for library in dbname_lib.librarys.find():
-    list_of_libraries.append(library["name"])
 
 while True:
+    list_of_libraries = []
+    for library in dbname_lib.librarys.find():
+        list_of_libraries.append(library["name"])
     new_or_old = input(
         "Do you want to create a new library or use an existing one? (new/old): "
     )
