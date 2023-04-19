@@ -23,7 +23,7 @@ while True:
             print("This library already exists")
         else:
             library = Library(library_name)
-            library.create_libary()
+            library.create_library()
             print("The library has been created")
     elif new_or_old == "old":
         print("The list of the libraries are: ")
