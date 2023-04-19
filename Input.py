@@ -56,7 +56,7 @@ while True:
                 for member in members:
                     print(member)
                 rentable_name = input("Enter the name of the rentable item: ")
-                if dbname_lib.librarys.find_one({"name": library_name, "rentables.name": rentable})['rentables'][0]['amound'] > 0:
+                if dbname_lib.librarys.find_one({"name": library_name, "rentables.name": rentable})['rentables'][0]['amount'] > 0:
                     if rentable_name in item_type:
                         member = input("Enter the name of the member: ")
                         library.rent(rentable_name, member)
