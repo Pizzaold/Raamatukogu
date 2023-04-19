@@ -14,3 +14,18 @@ Datastorage: Mongodb
 * Jürmo Mihhailov - Leader and coder
 * Aaron Aivo Alev - Coder
 * Aimar Kiivits - Coder
+
+# Database example
+### Library collection
+```
+{
+  "_id":{"$oid":"643849a059fb70c4f796b652"},
+  "name":"Marten lib",
+  "rentables":[
+      {"type":"book",
+      "name":"sus",
+      "amount":{"$numberInt":"999975"},
+      "popularity":{"$numberInt":"10"}}
+      ] 
+}
+```
