@@ -6,6 +6,10 @@ We are usining Pivotal Tracker for version control.
 
 Datastorage: Mongodb
 
+### Needed python librarys: <br />
+* PyMongo
+
+
 ## Members and there rolls.
 * Jürmo Mihhailov - Leader and coder
 * Aaron Aivo Alev - Coder
