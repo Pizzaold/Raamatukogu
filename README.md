@@ -30,4 +30,4 @@ Datastorage: Mongodb
 }
 ```
 
-__Work on this has been stoped__
+__Work on this repository has been stopped__
