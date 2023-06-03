@@ -23,6 +23,7 @@ class Library:
             {
                 "name": self.library_name,
                 "rentables": [],
+                "members": [],
             }
         )
 

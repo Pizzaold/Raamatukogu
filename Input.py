@@ -8,11 +8,11 @@ Used to start the program and get users input.
 """
 
 # Get the list of the library
-list_of_libraries = []
-for library in dbname_lib.librarys.find():
-    list_of_libraries.append(library["name"])
 
 while True:
+    list_of_libraries = []
+    for library in dbname_lib.librarys.find():
+        list_of_libraries.append(library["name"])
     new_or_old = input(
         "Do you want to create a new library or use an existing one? (new/old): "
     )
@@ -23,7 +23,7 @@ while True:
             print("This library already exists")
         else:
             library = Library(library_name)
-            library.create_libary()
+            library.create_library()
             print("The library has been created")
     elif new_or_old == "old":
         print("The list of the libraries are: ")
@@ -56,7 +56,7 @@ while True:
                 for member in members:
                     print(member)
                 rentable_name = input("Enter the name of the rentable item: ")
-                if dbname_lib.librarys.find_one({"name": library_name, "rentables.name": rentable})['rentables'][0]['amound'] > 0:
+                if dbname_lib.librarys.find_one({"name": library_name, "rentables.name": rentable})['rentables'][0]['amount'] > 0:
                     if rentable_name in item_type:
                         member = input("Enter the name of the member: ")
                         library.rent(rentable_name, member)
